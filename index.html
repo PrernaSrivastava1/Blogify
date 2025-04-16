@@ -1,30 +1,115 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BLOGIFY</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blogify - Your Blogging Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 1s ease-out forwards;
+    }
+
+    .bg-theme-gradient {
+      background: linear-gradient(to left, #ffa726, #4a90e2);
+    }
+
+    h2, p, h1 {
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    .btn {
+      @apply inline-block px-6 py-2 rounded-full bg-[#4a90e2] text-white font-semibold shadow-lg hover:scale-105 transform transition duration-300 ease-in-out;
+    }
+        @keyframes glow {
+          0% {
+            box-shadow: 0 0 5px #4a90e2, 0 0 10px #4a90e2;
+          }
+          50% {
+            box-shadow: 0 0 20px #ffa726, 0 0 30px #ffa726;
+          }
+          100% {
+            box-shadow: 0 0 5px #4a90e2, 0 0 10px #4a90e2;
+          }
+        }
+      
+        .glow-on-hover:hover {
+          animation: glow 1.5s infinite alternate;
+        }
+          
+  </style>
 </head>
-<body>
-    <header>
-        <h1>BLOGIFY</h1>
-    </header>
-    <main>
-        <section>
-            <h2>Latest Posts</h2>
-            <article>
-                <h3>Post Title 1</h3>
-                <p>This is a summary of the first post.</p>
-            </article>
-            <article>
-                <h3>Post Title 2</h3>
-                <p>This is a summary of the second post.</p>
-            </article>
-        </section>
-    </main>
-    <footer>
-        <p> &copy; 2025 BLOGIFY. All rights reserved.</p>
-    </footer>
+<body class="bg-gradient-to-br from-[#ffa726] to-[#4a90e2] text-gray-900 min-h-screen font-sans">
+
+  <header class="bg-white shadow-md">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-3xl font-bold text-[#4a90e2]">BLOGIFY</h1>
+      <nav>
+        <ul class="flex gap-6 text-lg font-medium">
+          <li><a href="#home" class="hover:text-[#4a90e2] transition duration-300">Home</a></li>
+          <li><a href="#blogs" class="hover:text-[#4a90e2] transition duration-300">Blogs</a></li>
+          <li><a href="#about" class="hover:text-[#4a90e2] transition duration-300">About</a></li>
+          <li><a href="#contact" class="hover:text-[#4a90e2] transition duration-300">Contact</a></li>
+          <li><a href="loginpage.html" class="bg-[#4a90e2] text-white px-4 py-2 rounded hover:bg-[#3f7fc6] transition duration-300">Login</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home" class="text-center py-24 fade-in-up">
+    <div class="container mx-auto">
+      <h2 class="text-4xl font-bold text-white mb-4">Welcome to Blogify</h2>
+      <p class="text-xl text-white mb-6">Start Writing Your Story</p>
+      <a href="#blogs" class="btn bg-[#4a90e2] text-white px-8 py-3 rounded-full font-bold text-lg shadow-lg hover:bg-[#3f7fc6] transform hover:scale-110 transition duration-300 animate-bounce glow-on-hover">
+        Explore Blogs
+      </a>
+    </div>
+  </section>
+
+  <section id="blogs" class="bg-white py-16">
+    <div class="container mx-auto px-6 text-center fade-in-up">
+      <h2 class="text-3xl font-bold text-[#4a90e2] mb-4">Latest Blogs</h2>
+      <p class="text-gray-600">Stay tuned! Dynamic blog content coming soon.</p>
+    </div>
+  </section>
+
+  <section id="about" class="bg-[#ffa726] text-white py-16">
+    <div class="container mx-auto px-6 text-center fade-in-up">
+      <h2 class="text-3xl font-bold mb-4">About Blogify</h2>
+      <p>Blogify is a platform where you can read and write blogs on various topics.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="bg-white py-16">
+    <div class="container mx-auto px-6 text-center fade-in-up">
+      <h2 class="text-3xl font-bold text-[#4a90e2] mb-4">Contact Us</h2>
+      <p class="text-gray-600">We're here to connect! Reach out via social or email.</p>
+    </div>
+  </section>
+
+  <section id="login" class="bg-[#4a90e2] text-white py-16">
+    <div class="container mx-auto px-6 text-center fade-in-up">
+      <h2 class="text-3xl font-bold mb-4">Login</h2>
+      <a href="loginpage.html" target="_self" class="inline-block bg-white text-[#4a90e2] px-6 py-2 rounded-full font-semibold shadow hover:scale-105 transition">Go to Login Page</a>
+    </div>
+  </section>
+
+  <footer class="bg-gray-900 text-white py-4 text-center">
+    <div class="container mx-auto">
+      <p>&copy; 2025 Blogify. All rights reserved.</p>
+    </div>
+  </footer>
+
 </body>
 </html>
