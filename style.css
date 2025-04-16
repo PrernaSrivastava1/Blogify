@@ -1,0 +1,27 @@
+header {
+    color: blue;
+    font-size: 3em;
+    background-color: rgb(6, 0, 12);
+}
+
+header h1 {
+    color: rgb(250, 247, 247);
+    font-size: 1em;
+    background-color: rgb(6, 0, 12);
+    text-align: left;
+    padding: 0.5em;
+    margin: 0;
+    border: 0.1em solid rgb(6, 0, 6);
+    border-radius: 0.1em;
+    text-shadow: 0.1em 0.1em 0.2em rgb(6, 0, 6);
+    font-family:var(0.3em);
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.0em;
+    text-decoration:double whitesmoke;
+    text-decoration-color: rgb(14, 1, 14);
+    text-decoration-thickness: 0.1em;
+    text-underline-offset: 0.1em;
+    text-underline-position: under;
+    
+}
