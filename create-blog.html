@@ -1,0 +1,78 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Write a Blog | Blogify</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- CKEditor 5 CDN -->
+  <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+</head>
+<body class="bg-gradient-to-br from-[#ffa726] to-[#4a90e2] min-h-screen h-[100vh] p-10 flex items-center justify-center">
+
+  <div class="bg-white shadow-2xl rounded-2xl max-w-6xl w-full h-[90vh] p-10 font-sans overflow-y-auto">
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-6">
+      <h1 class="text-3xl font-bold text-[#4a90e2]">✍️ Write a New Blog</h1>
+      <a href="/user-profile.html" class="text-sm bg-[#4a90e2] hover:bg-[#2563eb] text-white px-4 py-2 rounded-full font-semibold transition-all duration-300 shadow-md">
+        ← Back to Profile
+      </a>
+    </div>
+
+    <!-- Blog Title Input -->
+    <input type="text" id="blogTitle" placeholder="Enter Blog Title" class="w-full p-4 mb-6 text-lg border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#4a90e2]" />
+
+    <!-- CKEditor Container with Increased Height -->
+    <div class="h-[500px]">
+      <textarea id="editor" class="mb-4"></textarea>
+    </div>
+
+    <!-- Save Button -->
+    <div class="text-right mt-6">
+      <button onclick="saveBlog()" class="bg-[#ffa726] hover:bg-[#f68c1f] text-white px-8 py-3 rounded-full text-lg font-semibold shadow-md transition-transform hover:scale-105">
+        💾 Save Blog
+      </button>
+    </div>
+  </div>
+
+  <script>
+    let editorInstance;
+
+    // Initialize CKEditor
+    ClassicEditor
+      .create(document.querySelector('#editor'))
+      .then(editor => {
+        editorInstance = editor;
+      })
+      .catch(error => {
+        console.error(error);
+      });
+
+    // Save Blog to localStorage
+    function saveBlog() {
+      const title = document.getElementById('blogTitle').value.trim();
+      const content = editorInstance.getData().trim();
+
+      if (!title || !content) {
+        alert('Please enter both title and content.');
+        return;
+      }
+
+      const blog = {
+        title,
+        content,
+        date: new Date().toLocaleString()
+      };
+
+      const existingBlogs = JSON.parse(localStorage.getItem('userBlogs')) || [];
+      existingBlogs.unshift(blog);
+      localStorage.setItem('userBlogs', JSON.stringify(existingBlogs));
+
+      // Redirect to profile page
+      window.location.href = '/profile.html';
+    }
+  </script>
+
+</body>
+</html>

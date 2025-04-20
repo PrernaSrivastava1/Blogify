@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blogify | Create Account</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes fadeSlideIn {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .fade-slide-in {
+      animation: fadeSlideIn 0.8s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-[#ffa726] to-[#4a90e2] min-h-screen flex items-center justify-center font-sans">
+
+  <div class="bg-white p-8 rounded-2xl shadow-2xl w-full max-w-2xl fade-slide-in">
+    <h1 class="text-3xl font-bold text-center text-[#4a90e2] mb-4 transition-transform duration-500 hover:scale-105">
+      Create Your <span class="text-[#ffa726]">Blogify</span> Account
+    </h1>
+    <p class="text-gray-600 text-center mb-6">Join the blogging community and share your voice!</p>
+
+    <!-- Signup form starts -->
+    <form id="signupForm" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div>
+        <label for="name" class="block mb-1 text-gray-700">Full Name</label>
+        <input type="text" id="name" name="name" required placeholder="John Doe"
+               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#ffa726] transition focus:scale-105">
+      </div>
+
+      <div>
+        <label for="username" class="block mb-1 text-gray-700">Username</label>
+        <input type="text" id="username" name="username" required placeholder="john_doe"
+               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4a90e2] transition focus:scale-105">
+      </div>
+
+      <div>
+        <label for="email" class="block mb-1 text-gray-700">Email</label>
+        <input type="email" id="email" name="email" required placeholder="you@example.com"
+               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#ffa726] transition focus:scale-105">
+      </div>
+
+      <div>
+        <label for="phone" class="block mb-1 text-gray-700">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="9876543210"
+               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4a90e2] transition focus:scale-105">
+      </div>
+
+      <div>
+        <label for="password" class="block mb-1 text-gray-700">Password</label>
+        <input type="password" id="password" name="password" required placeholder="********"
+               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#ffa726] transition focus:scale-105">
+      </div>
+
+      <div>
+        <label for="dob" class="block mb-1 text-gray-700">Date of Birth</label>
+        <input type="date" id="dob" name="dob"
+               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4a90e2] transition focus:scale-105">
+      </div>
+
+      <div>
+        <label for="gender" class="block mb-1 text-gray-700">Gender</label>
+        <select id="gender" name="gender"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#ffa726] transition focus:scale-105">
+          <option value="">Select</option>
+          <option value="female">Female</option>
+          <option value="male">Male</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="education" class="block mb-1 text-gray-700">Education</label>
+        <input type="text" id="education" name="education" placeholder="e.g. B.Tech in CSE"
+               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4a90e2] transition focus:scale-105">
+      </div>
+
+      <!-- Interests -->
+      <div class="md:col-span-2">
+        <label class="block mb-1 text-gray-700">Reading & Writing Interests</label>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <label class="flex items-center"><input type="checkbox" name="interests" value="Tech" class="accent-[#4a90e2] mr-2"> Tech</label>
+          <label class="flex items-center"><input type="checkbox" name="interests" value="Health" class="accent-[#4a90e2] mr-2"> Health</label>
+          <label class="flex items-center"><input type="checkbox" name="interests" value="Fiction" class="accent-[#4a90e2] mr-2"> Fiction</label>
+          <label class="flex items-center"><input type="checkbox" name="interests" value="Travel" class="accent-[#4a90e2] mr-2"> Travel</label>
+          <label class="flex items-center"><input type="checkbox" name="interests" value="Education" class="accent-[#4a90e2] mr-2"> Education</label>
+          <label class="flex items-center"><input type="checkbox" name="interests" value="Personal Growth" class="accent-[#4a90e2] mr-2"> Personal Growth</label>
+        </div>
+      </div>
+
+      <!-- Bio -->
+      <div class="md:col-span-2">
+        <label for="bio" class="block mb-1 text-gray-700">Short Bio</label>
+        <textarea id="bio" name="bio" rows="2" placeholder="Tell us something about yourself..."
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4a90e2] transition focus:scale-105 resize-none"></textarea>
+      </div>
+
+      <!-- Profile Picture -->
+      <div class="md:col-span-2">
+        <label class="block mb-1 text-gray-700">Upload Profile Picture (optional)</label>
+        <div class="flex items-center space-x-4">
+          <div class="w-16 h-16 rounded-full bg-gray-200 overflow-hidden border-2 border-[#ffa726]">
+            <img id="profilePreview" src="https://via.placeholder.com/100" alt="Preview" class="w-full h-full object-cover">
+          </div>
+          <input type="file" id="profilePic" name="profilePic" accept="image/*"
+                 class="block w-full text-sm text-gray-600 file:mr-4 file:py-1 file:px-4
+                        file:rounded-full file:border-0 file:text-sm file:font-semibold
+                        file:bg-[#4a90e2] file:text-white hover:file:bg-[#2563eb]">
+        </div>
+      </div>
+
+      <!-- Submit button -->
+      <div class="md:col-span-2 mt-4">
+        <button type="submit"
+                class="w-full bg-[#4a90e2] hover:bg-[#2563eb] text-white py-2 rounded-xl transition-transform duration-300 hover:scale-105 font-semibold shadow-md">
+          Create Account
+        </button>
+      </div>
+    </form>
+
+    <p class="text-center text-sm text-gray-600 mt-6">
+      Already have an account?
+      <a href="login.html" class="text-[#ffa726] hover:underline hover:text-[#f68c1f] transition-colors duration-300">Log in</a>
+    </p>
+  </div>
+
+  <!-- JavaScript to preview image and save form data -->
+  <script>
+    // Show image preview
+    let profileImageBase64 = "";
+    document.getElementById("profilePic").addEventListener("change", function (e) {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        profileImageBase64 = e.target.result;
+        document.getElementById("profilePreview").src = profileImageBase64;
+      };
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Save form data to localStorage
+    document.getElementById("signupForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // Get interests as array
+      const interests = [];
+      document.querySelectorAll("input[name='interests']:checked").forEach(el => {
+        interests.push(el.value);
+      });
+
+      // Collect all data
+      const userData = {
+        name: document.getElementById("name").value,
+        username: document.getElementById("username").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        password: document.getElementById("password").value,
+        dob: document.getElementById("dob").value,
+        gender: document.getElementById("gender").value,
+        education: document.getElementById("education").value,
+        interests: interests,
+        bio: document.getElementById("bio").value,
+        profileImage: profileImageBase64
+      };
+
+      // Save to localStorage
+      localStorage.setItem("blogifyUser", JSON.stringify(userData));
+
+      // Redirect to profile page
+      alert("Account created successfully!");
+      window.location.href = "user-profile.html";
+    });
+  </script>
+</body>
+</html>

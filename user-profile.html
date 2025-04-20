@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blogify | My Profile</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .fade-slide-in {
+      animation: fadeSlideIn 0.8s ease-out forwards;
+    }
+    @keyframes fadeSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+
+</head>
+<body class="bg-gradient-to-br from-[#ffa726] to-[#4a90e2] min-h-screen p-6 flex items-center justify-center">
+
+    
+  <div class="bg-white shadow-2xl rounded-2xl max-w-9x1 w-full p-8 fade-slide-in font-sans">
+    <div class="text-right mt-10 mb-4">
+        <a href="/index.html" 
+           class="inline-block bg-[#4a90e2] hover:bg-[#3569a3] text-white px-6 py-2 rounded-full font-semibold shadow-md transition-transform hover:scale-105">
+          ← Back to Home
+        </a>
+      </div>
+   <!-- User Header -->
+    <div class="flex flex-col md:flex-row items-center gap-6 mb-8">
+      <!-- Profile image (will be updated via JS) -->
+      <img id="profileImage" src="https://via.placeholder.com/120" alt="Profile"
+           class="w-32 h-32 rounded-full border-4 border-[#ffa726] object-cover shadow-md">
+      
+      <!-- User Details -->
+      <div class="text-center md:text-left">
+        <h2 id="displayName" class="text-3xl font-bold text-[#4a90e2]">New User</h2> <!-- Name -->
+        <p id="displayEmail" class="text-gray-600">youremail@example.com</p>          <!-- Email -->
+        <p id="displayEducation" class="text-sm text-gray-500 mt-1">Education: Not updated</p> <!-- Education -->
+        
+        <!-- User Interests -->
+        <div id="interestTags" class="mt-2">
+          <span class="inline-block bg-[#d1d5db] text-white text-xs font-semibold px-3 py-1 rounded-full mr-2">No Interests</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Metrics Section -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center mb-8">
+      <!-- Rating -->
+      <div class="bg-[#fef3c7] p-4 rounded-xl shadow">
+        <p class="text-xl font-bold text-[#ffa726]">0 ★</p>
+        <p class="text-gray-600 text-sm">Profile Rating</p>
+      </div>
+      <!-- Blogs Written -->
+      <div class="bg-[#e0f2fe] p-4 rounded-xl shadow">
+        <p class="text-xl font-bold text-[#4a90e2]">0</p>
+        <p class="text-gray-600 text-sm">Blogs Written</p>
+      </div>
+      <!-- Blogs Read -->
+      <div class="bg-[#ffe4e6] p-4 rounded-xl shadow">
+        <p class="text-xl font-bold text-[#ec4899]">0</p>
+        <p class="text-gray-600 text-sm">Blogs Read</p>
+      </div>
+    </div>
+
+    <!-- Call to Action: Write Blog -->
+    <div class="text-center mb-10">
+      <h3 class="text-xl font-semibold text-gray-800 mb-2">Start Your Blogging Journey</h3>
+      <p class="text-gray-600 mb-4">You haven’t written any blogs yet. Get started and share your ideas with the world!</p>
+      <a href="/create-blog.html" class="bg-[#ffa726] hover:bg-[#f68c1f] text-white px-6 py-2 rounded-full font-semibold shadow-md transition-transform hover:scale-105">
+        Write Your First Blog
+      </a>
+      
+    </div>
+
+    <!-- Blog Activity Section -->
+    <div>
+      <!-- Blog Activity Section -->
+<div>
+    <h3 class="text-2xl font-bold text-gray-800 mb-6 border-b-2 pb-2 border-[#ffa726]">My Blogs</h3>
+    <div id="blogList" class="space-y-4">
+      <!-- Blogs will be injected here -->
+    </div>
+  </div>
+  
+  <script>
+    // Function to display blogs from localStorage
+    function displayBlogs() {
+      const blogList = document.getElementById('blogList');
+      const blogs = JSON.parse(localStorage.getItem('userBlogs')) || [];
+  
+      if (blogs.length === 0) {
+        blogList.innerHTML = `
+          <div class="bg-gray-100 text-center p-6 rounded-xl shadow-inner">
+            <p class="text-gray-500 text-sm mb-2">You haven’t written any blogs yet.</p>
+            <p class="text-gray-600 text-sm">Once you start writing, your blogs will be visible here!</p>
+          </div>
+        `;
+        return;
+      }
+  
+      blogList.innerHTML = blogs.map(blog => `
+        <div class="bg-white p-4 rounded-lg shadow">
+          <h4 class="text-xl font-semibold text-[#4a90e2] mb-2">${blog.title}</h4>
+          <p class="text-sm text-gray-500 mb-2">${blog.date}</p>
+          <div class="text-gray-700">${blog.content}</div>
+        </div>
+      `).join('');
+    }
+  
+    // Call the function on page load
+    window.onload = displayBlogs;
+  </script>  
+  </div>
+
+  <!-- JavaScript to fetch user data from localStorage and update profile -->
+  <script>
+    // Try to load user data from localStorage
+    const userDataJSON = localStorage.getItem("blogifyUser");
+
+    if (userDataJSON) {
+      // Parse the data if it exists
+      const user = JSON.parse(userDataJSON);
+
+      // Update name, email, education
+      document.getElementById("displayName").textContent = user.name || "New User"; // Fallback if empty
+      document.getElementById("displayEmail").textContent = user.email || "youremail@example.com";
+      document.getElementById("displayEducation").textContent = user.education
+        ? "Education: " + user.education
+        : "Education: Not updated";
+
+      // Update profile image if uploaded
+      if (user.profileImage) {
+        document.getElementById("profileImage").src = user.profileImage;
+      }
+
+      // Show selected interests as tags
+      const interestContainer = document.getElementById("interestTags");
+      interestContainer.innerHTML = ""; // Clear old/default content
+      if (user.interests && user.interests.length > 0) {
+        user.interests.forEach(interest => {
+          const span = document.createElement("span");
+          span.className = "inline-block bg-[#4a90e2] text-white text-xs font-semibold px-3 py-1 rounded-full mr-2 mb-1";
+          span.textContent = interest;
+          interestContainer.appendChild(span);
+        });
+      } else {
+        // If no interests, show default message
+        interestContainer.innerHTML = '<span class="inline-block bg-[#d1d5db] text-white text-xs font-semibold px-3 py-1 rounded-full mr-2">No Interests</span>';
+      }
+    } else {
+      alert("No user data found. Please create an account first.");
+    }
+  </script>
+  <!-- Back to Home Section -->
+</body>
+</html>
+<!-- End of user-profile.html -->
